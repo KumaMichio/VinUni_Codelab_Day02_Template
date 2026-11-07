@@ -34,7 +34,40 @@ Dùng **4 Lenses** quét qua vận hành của các công ty thành viên Vingro
 
 Chọn top 3 từ danh sách SCAN: **#2 (Xanh SM Sự cố sạc), #4 (Vinhomes CSKH), #6 (Xanh SM Hủy chuyến).**
 
-## Thẻ bài toán tiêu biểu: Card #2 — Xanh SM Xử lý sự cố sạc pin thực địa
+## 🃏 QUICK PROBLEM CARD #1 — VINHOMES
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #1                                       │
+│                                                             │
+│ Bài toán: Cư dân Vinhomes gửi phản ánh về sự cố thang máy,  │
+│ vệ sinh, an ninh hoặc hạ tầng cần được phân loại và chuyển  │
+│ nhanh đến đúng bộ phận phụ trách.                           │
+│ Công ty thành viên: [ ] VinFast [ ] Xanh SM [x] Vinhomes    │
+│                                                             │
+│ Ai đang đau? Cư dân (chờ phản hồi), Nhân viên CSKH (quá tải),│
+│ Ban quản lý (tiếp nhận sai bộ phận).                        │
+│                                                             │
+│ Workflow thủ công hiện tại (5 bước):                        │
+│   1. Cư dân gửi phản ánh qua App / Hotline                  │
+│   → 2. Nhân viên CSKH đọc và kiểm tra nội dung              │
+│   → 3. Phân loại phản ánh theo nhóm vấn đề                  │
+│   → 4. Chuyển yêu cầu đến bộ phận phụ trách                 │
+│   → 5. Nhân viên soạn phản hồi và gửi cho cư dân            │
+│                                                             │
+│ Bước nào tốn nhất? Bước 2-4 (⏱ 10 phút/lượt)                │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2-4              │
+│ (Đọc nội dung -> Phân loại -> Đề xuất bộ phận xử lý)        │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)?                       │
+│ Giảm thời gian phân loại từ 10 phút ──> dưới 2 phút/lượt.   │
+│ Độ chính xác phân loại mục tiêu đạt tối thiểu 90%.           │
+│                                                             │
+│ Quick Architecture: [ ] No AI [ ] Rule [x] LLM [ ] Agent   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## 🃏 QUICK PROBLEM CARD #2 — XANH SM
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -42,38 +75,63 @@ Chọn top 3 từ danh sách SCAN: **#2 (Xanh SM Sự cố sạc), #4 (Vinhomes 
 │                                                             │
 │ Bài toán: Tài xế Xanh SM báo cáo sự cố sạc pin / hết pin    │
 │ giữa đường cần điều phối cứu hộ hoặc trạm sạc gần nhất.     │
-│ Công ty thành viên: [x] Xanh SM (GSM)                       │
+│ Công ty thành viên: [ ] VinFast [x] Xanh SM [ ] Vinhomes    │
 │                                                             │
-│ Ai đang đau? Tài xế (chờ đợi), Điều phối viên (quá tải)     │
+│ Ai đang đau? Tài xế (chờ đợi), Điều phối viên (quá tải),    │
+│ Khách hàng (chậm chuyến).                                   │
 │                                                             │
 │ Workflow thủ công hiện tại (5 bước):                        │
 │   1. Tài xế gọi tổng đài điều vận báo hết pin               │
 │   → 2. Điều phối viên tra cứu thủ công vị trí xe trên bản đồ│
-│   → 3. Tra cứu thủ công các trạm sạc VinFast còn trụ trống   │
-│   → 4. Viết tin nhắn chỉ dẫn/đường đi gửi qua App tài xế    │
-│   → 5. Liên hệ đội xe cứu hộ nếu xe đã cạn kiệt pin         │
+│   → 3. Tra cứu trạm sạc phù hợp và tình trạng trụ sạc       │
+│   → 4. Soạn tin nhắn chỉ dẫn đường đi gửi qua App tài xế    │
+│   → 5. Liên hệ đội xe cứu hộ nếu xe không thể di chuyển     │
 │                                                             │
 │ Bước nào tốn nhất? Bước 3-4 (⏱ 12 phút/lượt)                │
 │ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3-4              │
-│ (Tự động hóa lấy vị trí -> Tra cứu trạm trống -> Draft tin) │
+│ (Phân tích vị trí -> Tra cứu dữ liệu trạm sạc -> Soạn       │
+│ chỉ dẫn cho tài xế và đề xuất phương án hỗ trợ)             │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)?                        │
+│ Đo thành công bằng gì (Metric có số)?                       │
 │ Giảm thời gian xử lý sự cố từ 15 phút ──> dưới 3 phút.      │
 │                                                             │
-│ Quick Architecture: [x] LLM Feature (Tự động soạn chỉ dẫn)   │
+│ Quick Architecture: [ ] No AI [ ] Rule [x] LLM [ ] Agent   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
----
+## 🃏 QUICK PROBLEM CARD #3 — VINFAST
 
-# 🗳️ Quyết định lựa chọn của nhóm:
-Nhóm quyết định chọn bài toán **"Card #2 — Xanh SM Xử lý sự cố sạc pin thực địa"** để thực hiện Deep-Dive.
-
-## Lý do lựa chọn và loại bỏ các thẻ khác:
-* **Card #4 (Vinhomes CSKH):** Mặc dù tốn thời gian nhưng rủi ro sai sót thông tin liên quan đến phí quản lý, tranh chấp căn hộ có thể dẫn đến khiếu nại pháp lý nặng cho Vinhomes. Cần gom thêm dữ liệu và xử lý bằng Rule-based router trước.
-* **Card #6 (Xanh SM Hủy chuyến):** Đây là tác vụ phân tích offline (back-office), không ảnh hưởng trực tiếp đến hiệu suất vận hành thời gian thực (real-time) như sự cố hết pin của tài xế trên đường đón khách.
-
----
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #3                                       │
+│                                                             │
+│ Bài toán: Khách hàng VinFast gửi yêu cầu bảo hành khi xe    │
+│ gặp lỗi pin, động cơ hoặc phần mềm cần được phân loại và    │
+│ chuyển đến đúng trung tâm dịch vụ.                          │
+│ Công ty thành viên: [x] VinFast [ ] Xanh SM [ ] Vinhomes    │
+│                                                             │
+│ Ai đang đau? Khách hàng (chờ xử lý), Nhân viên CSKH        │
+│ (mất thời gian phân loại), Kỹ thuật viên (thiếu thông tin). │
+│                                                             │
+│ Workflow thủ công hiện tại (5 bước):                        │
+│   1. Khách hàng gửi yêu cầu bảo hành qua App / Hotline      │
+│   → 2. Nhân viên tiếp nhận thông tin xe và mô tả lỗi        │
+│   → 3. Nhân viên đọc và phân loại nhóm lỗi                  │
+│   → 4. Chuyển yêu cầu đến trung tâm dịch vụ phù hợp         │
+│   → 5. Nhân viên thông báo lịch tiếp nhận cho khách hàng    │
+│                                                             │
+│ Bước nào tốn nhất? Bước 2-3 (⏱ 8 phút/lượt)                 │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2-3              │
+│ (Trích xuất thông tin -> Phân loại lỗi -> Tạo bản tóm tắt   │
+│ yêu cầu cho kỹ thuật viên)                                  │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)?                       │
+│ Giảm thời gian phân loại từ 8 phút ──> dưới 2 phút/lượt.    │
+│ Độ chính xác phân loại mục tiêu đạt tối thiểu 90%.           │
+│                                                             │
+│ Quick Architecture: [ ] No AI [ ] Rule [x] LLM [ ] Agent   │
+└─────────────────────────────────────────────────────────────┘
+```
 
 # 🏗️ Phase 3 — DEEP-DIVE (Nhóm)
 

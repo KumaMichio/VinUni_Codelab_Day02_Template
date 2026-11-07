@@ -121,3 +121,21 @@ flowchart TD
 | Ước tính quãng đường còn đi được sai | Dùng biên an toàn (buffer) trong rule; ưu tiên cứu hộ khi sát ngưỡng. |
 | Dữ liệu trạng thái trạm sạc cũ | Hiển thị thời điểm cập nhật; điều phối viên xác nhận khi cần. |
 | Phụ thuộc quá mức vào AI | Điều phối viên luôn là bước duyệt cuối; có đường lui về quy trình thủ công. |
+
+
+# 🏁 Phase 5 — EVALUATE (Nhóm, 20 min)
+
+### AI Readiness Checklist:
+1. [ ] Chúng tôi có sẵn dữ liệu mẫu/logs sạch để test?
+2. [ ] Rủi ro khi AI sai có nằm trong tầm kiểm soát (qua HITL hoặc Fallback)?
+3. [ ] Stakeholders sẵn sàng thay đổi quy trình làm việc cũ?
+
+### Quyết định cuối cùng của Ban Giám Đốc Vin Smart Future:
+[ ] **GO (Bắt đầu xây dựng Prototype):** Bắt đầu phát triển với scope hẹp.
+[ ] **NOT YET (Cần tích lũy thêm dữ liệu/xác lập baseline):** Trì hoãn để chuẩn bị thêm.
+[ ] **NO-GO (Không khả thi / Rule-based tốt hơn):** Hủy bỏ dự án AI này.
+
+**Justification (Lý giải quyết định dựa trên bằng chứng kỹ thuật và chi phí):**
+> *Viết lý giải chi tiết tại đây*
+
+---

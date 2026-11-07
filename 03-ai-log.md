@@ -11,9 +11,16 @@
 
 ## 1. Phase 1–3: Scan, Quick Cards, Deep-Dive
 
-> ✍️ *[Tự điền: Bạn đã dùng AI thế nào khi brainstorm 7 bài toán, viết 3 Quick Cards và Deep-Dive? Prompt nào hiệu quả? Con số nào AI đưa ra mà bạn phải đánh dấu là "ước lượng giả định"? Khi dùng prompt "CFO khắt khe" để stress-test card, AI đã chỉ ra điểm yếu gì?]*
+### AI đã giúp gì
 
-Một lần AI đánh giá sai: khi rà soát, AI cho rằng việc `01-problem-scan.md` của tôi đề xuất **Card #1 (VinFast — phân loại lỗi xe)** trong khi Deep-Dive nhóm phân tích **Xanh SM — xe hết pin giữa đường** là "lỗi không nhất quán". Thực tế Scan là bài **cá nhân**, còn Deep-Dive là bài **nhóm**, nhóm có thể chọn bài toán từ Scan của thành viên khác. AI thiếu ngữ cảnh về cách nhóm làm việc nên kết luận sai; tôi giữ nguyên lựa chọn và chỉ ghi rõ nguồn gốc bài toán trong báo cáo.
+| Phase | Tôi dùng AI để | Kết quả |
+|-------|----------------|---------|
+| 1. Scan | Brainstorm pain point vận hành cho VinFast, Xanh SM, Vinhomes theo 4 lenses. | Có 7 bài toán. AI còn giúp tôi loại bớt: #2 (đối chiếu hóa đơn sạc) và #5 (đăng ký thẻ xe) là dữ liệu có cấu trúc, rule-based/ETL rẻ và chính xác hơn LLM. |
+| 2. Quick Cards | Viết 3 Quick Cards theo khung của đề, ước tính thời gian và tổn thất. | 3 card có workflow, bottleneck, metric có số. [Nếu có dùng prompt "CFO khắt khe": AI chỉ ra điểm yếu gì, bạn sửa card nào?] |
+| 3. Deep-Dive | Vẽ workflow hiện tại / tương lai bằng mermaid, viết Problem Statement 6-field, so sánh Rule vs LLM vs Agent. | AI đề xuất chỉ dùng LLM ở chỗ cần ngôn ngữ tự nhiên (trích xuất tin nhắn tài xế, soạn tin), phần tìm trạm/xếp hạng để rule xử lý; không cần Agentic Loop. |
+
+
+1. **Con số "nghe có vẻ thật" nhưng là bịa.** Các số liệu như ~9 phút/phiếu, ~20% xếp sai, 300 phiếu/ngày (Card #1) hay 20 phút/lượt, 100 sự cố/ngày (Deep-Dive) là AI ước lượng, không có nguồn. Tôi đã đánh dấu chúng là **"ước lượng giả định, cần xác thực"** thay vì trình bày như dữ liệu thật của Vingroup.
 
 ---
 

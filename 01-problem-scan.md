@@ -5,10 +5,6 @@
 
 ## 🔍 Phase 1 — SCAN (Cá nhân, 20 min)
 
-Dùng 4 Lenses để quét hoạt động vận hành của các công ty thành viên Vingroup. Ghi lại ít nhất 5 bài toán/bottleneck thực tế.
-
-### 4 Lenses
-
 ### 📝 List bài toán của tôi
 
 | # | Subsidiary | Lens | Mô tả ngắn bài toán |

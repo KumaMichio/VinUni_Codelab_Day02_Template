@@ -1,6 +1,4 @@
 # 01 — Problem Scan (Vin Smart Future Edition)
-
-> Mục tiêu: quét vận hành của các công ty thành viên Vingroup, tìm bài toán thực tế đáng giải bằng AI, rồi đánh giá nhanh top 3.
 > Nguồn bài toán: `03-inspiration-kit.md`. Các con số trong thẻ là **ước lượng giả định**, cần thay bằng số liệu thực khi có.
 
 ---
@@ -10,19 +8,6 @@
 Dùng 4 Lenses để quét hoạt động vận hành của các công ty thành viên Vingroup. Ghi lại ít nhất 5 bài toán/bottleneck thực tế.
 
 ### 4 Lenses
-
-| Lens | Ý nghĩa | Ví dụ |
-|------|---------|-------|
-| **Lặp lại** (Repetitive) | Tác vụ lặp đi lặp lại nhiều lần hằng ngày | So khớp hóa đơn sạc điện tại VinFast, route lại chuyến taxi tại Xanh SM |
-| **Tốn thời gian** (Time-consuming) | Tác vụ ngốn thời gian xử lý thủ công của nhân viên | Soạn thảo phản hồi đánh giá 1-star của cư dân Vinhomes |
-| **AI có thể tốt hơn** (AI-upgrade) | Dịch vụ khách hàng hiện tại còn chậm hoặc phản hồi rập khuôn | Chatbot CSKH Vinpearl hỗ trợ đặt vé vui chơi |
-| **Pain từ người khác** (Stakeholder Pain) | Bottleneck khiến khách hàng hoặc nhân viên thực địa phàn nàn | Tài xế Xanh SM phàn nàn về điểm đón khách không chính xác |
-
-> 🤖 **AI Prompt — Partner brainstorm** (dùng nếu chưa có ý tưởng):
->
-> ```
-> Tôi là AI Engineer tại Vin Smart Future (Vingroup). Tôi đang tìm kiếm các pain point vận hành cụ thể có thể tối ưu bằng AI cho mảng [Chọn một: VinFast / Xanh SM / Vinhomes / Vinmec]. Hãy gợi ý cho tôi 5 quy trình nghiệp vụ thủ công, tốn nhiều thời gian và gây rò rỉ hiệu suất kèm con số thống kê ước tính về tổn thất.
-> ```
 
 ### 📝 List bài toán của tôi
 
@@ -37,42 +22,6 @@ Dùng 4 Lenses để quét hoạt động vận hành của các công ty thành
 ---
 
 ## 🃏 Phase 2 — QUICK-ASSESS (Cá nhân, 30 min)
-
-Chọn top 3 bài toán từ Phase 1 (**#1, #2, #3**) và hoàn thiện 3 Quick Problem Cards (10 phút/card). Bài #4 (Vinhomes) được dùng làm ví dụ mẫu.
-
-### ✅ Ví dụ mẫu — Bài toán #4 (Vinhomes)
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #EXAMPLE                                 │
-│                                                             │
-│ Bài toán (1 câu): Tự động phân loại và điều hướng phản ánh  │
-│ của cư dân gửi qua App Vinhomes Resident đến đúng ban quản  │
-│ lý tòa nhà.                                                 │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [X] Vinhomes  │
-│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
-│                                                             │
-│ Ai đang đau (Actor)? Nhân viên tiếp nhận phản ánh (đọc và   │
-│ chuyển tay từng ticket); cư dân (chờ lâu, bị chuyển nhầm).  │
-│                                                             │
-│ Workflow thủ công hiện tại:                                 │
-│   1. Cư dân gửi phản ánh trên app                           │
-│   ──> 2. Nhân viên tiếp nhận đọc nội dung                   │
-│   ──> 3. Tự xác định loại sự cố (điện/nước/ồn/vệ sinh...)   │
-│   ──> 4. Chuyển ticket đến bộ phận phụ trách                │
-│                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3-4: đọc, phân loại   │
-│ và chuyển đúng nơi (⏱ ~4 phút/lượt, dễ chuyển nhầm).        │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3: gán nhãn loại │
-│ sự cố + mức khẩn cấp, gợi ý bộ phận ở bước 4.               │
-│                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│ - Thời gian phân loại + điều hướng: 4 min ──> under 30 giây │
-│ - Tỷ lệ ticket chuyển sai bộ phận: 15% ──> under 5%         │
-│                                                             │
-│ Quick Architecture: [ ] No AI  [X] Rule  [X] LLM  [ ] Agent │
-└─────────────────────────────────────────────────────────────┘
-```
 
 ### Card #1 — Bài toán #1 (VinUni: chấm lab và phản hồi)
 
@@ -185,17 +134,3 @@ Chọn top 3 bài toán từ Phase 1 (**#1, #2, #3**) và hoàn thiện 3 Quick 
 │  cho phần lớn bài toán này.)                                │
 └─────────────────────────────────────────────────────────────┘
 ```
-
-> 🤖 **AI Prompt — Stress-Test thẻ bài toán** (dán nội dung từng thẻ vào LLM để nhận phản biện):
->
-> ```
-> Đây là một thẻ bài toán vận hành tôi đề xuất cho Vin Smart Future: [Dán nội dung]. Hãy đóng vai trò là một CFO và Trưởng phòng Vận hành cực kỳ khắt khe, chỉ ra cho tôi 3 điểm yếu về logic, metric, và giải thích vì sao rule-based code thông thường có thể giải quyết bài toán này tốt hơn là dùng AI.
-> ```
-
----
-
-## 💡 Lưu ý khi chọn bài toán
-
-1. **Chọn bài toán bạn hiểu rõ nhất:** ưu tiên bài toán mà ít nhất một thành viên trong nhóm hiểu rõ workflow hiện tại.
-2. **Operational Boundary quan trọng nhất:** ở mảng nhạy cảm (Vinmec, an toàn xe VinFast) phải có Human-in-the-loop. Ở các thẻ trên, AI chỉ *draft/gợi ý*, con người duyệt (trợ giảng, Manager, kế toán).
-3. **Problem First, AI Second:** Card #3 cố ý chọn "Rule" để minh họa: giải pháp đơn giản mang lại giá trị cao vẫn được điểm tối đa.

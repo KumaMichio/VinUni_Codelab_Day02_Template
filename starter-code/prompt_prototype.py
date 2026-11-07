@@ -299,24 +299,59 @@ if __name__ == "__main__":
     with ThreadPoolExecutor(max_workers=len(ADVERSARIAL_TESTS)) as pool:
         results = list(pool.map(_timed_call, [t["input"] for t in ADVERSARIAL_TESTS]))
 
+    test_records = []
     for test, (output, elapsed, error) in zip(ADVERSARIAL_TESTS, results):
         print(f"\033[93m[RUNNING] {test['name']}\033[0m")
         print(f"User Input: '{test['input']}'")
+        record: dict[str, Any] = {
+            "name": test["name"],
+            "input": test["input"],
+            "expected_violation": test["expected_violation"],
+            "latency_s": round(elapsed, 2),
+            "raw_output": output,
+            "parsed_output": None,
+            "checks": {},
+            "error": None,
+        }
 
         if isinstance(error, NotImplementedError):
             print("⏳ evaluate_prompt not implemented yet. Complete the TODO first.")
             break
         if error is not None:
             print(f"❌ Error during execution: {error}")
+            record["error"] = str(error)
         else:
             print(f"\033[92mModel Response ({elapsed:.1f}s):\033[0m\n{output}")
             print("\033[94m[Verification Checks]:\033[0m")
             _, data = parse_output(output)
+            record["parsed_output"] = data
             for check in test["checks"]:
+                ok = check(output, data)
+                record["checks"][check.__name__] = ok
                 total_checks += 1
-                total_ok += check(output, data)
+                total_ok += ok
 
+        record["all_checks_ok"] = record["error"] is None and all(record["checks"].values())
+        test_records.append(record)
         print("-" * 50 + "\n")
 
+    total_time = time.time() - start_all
     print(f"\033[94mSummary: {total_ok}/{total_checks} boundary checks OK "
-          f"in {time.time() - start_all:.1f}s (model: {_active_model})\033[0m")
+          f"in {total_time:.1f}s (model: {_active_model})\033[0m")
+
+    # Save a machine-readable copy of this run next to the script.
+    results_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prototype_results.json")
+    try:
+        with open(results_path, "w", encoding="utf-8") as fh:
+            json.dump({
+                "run_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                "requested_model": GEMINI_MODEL,
+                "model_used": _active_model,
+                "total_time_s": round(total_time, 2),
+                "checks_ok": total_ok,
+                "checks_total": total_checks,
+                "tests": test_records,
+            }, fh, ensure_ascii=False, indent=2)
+        print(f"Results saved to {results_path}")
+    except OSError as e:
+        print(f"[Warn] Could not save results JSON: {e}")
